@@ -1,2 +1,3 @@
-# mb-demo
-some demo of miniblink
+# MiniblinkAndVueDemo
+
+Miniblink and Vue SPA
