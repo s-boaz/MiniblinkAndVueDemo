@@ -21,7 +21,7 @@ misrepresented as being the original software.
 distribution.
 */
 
-#define _CRT_SECURE_NO_WARNINGS 
+#define _CRT_SECURE_NO_WARNINGS
 
 #include <Windows.h>
 #include <shellapi.h>
@@ -205,10 +205,10 @@ void onLoadUrlEnd(wkeWebView webView, void* param, const char *url, void *job, v
 void blinkMaximize()
 {
     HWND hwnd = wkeGetWindowHandle(app.window);
-    static bool isMax = true; 
+    static bool isMax = true;
     if (isMax)
         ::PostMessageW(hwnd, WM_SYSCOMMAND, SC_MAXIMIZE, 0);
-    else 
+    else
         ::PostMessageW(hwnd, WM_SYSCOMMAND, SC_RESTORE, 0);
     isMax = !isMax;
 }
@@ -268,7 +268,7 @@ LRESULT CALLBACK subClassProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam
 //         ::ScreenToClient(hWnd, &pt);
 //         if (::PtInRect(&g_moveRect, pt))
 //             return HTCAPTION;
-//         
+//
 //     }
     return DefSubclassProc(hWnd, uMsg, wParam, lParam);
 }
@@ -338,12 +338,12 @@ jsValue WKE_CALL_TYPE onShellExec(jsExecState es, void* param)
 
 void WKE_CALL_TYPE onDidCreateScriptContextCallback(wkeWebView webView, void* param, wkeWebFrameHandle frameId, void* context, int extensionGroup, int worldId)
 {
-    
+
 }
 
 bool createWebWindow(Application* app)
 {
-    app->window = wkeCreateWebWindow(WKE_WINDOW_TYPE_TRANSPARENT, NULL, 0, 0, 640, 480); 
+    app->window = wkeCreateWebWindow(WKE_WINDOW_TYPE_TRANSPARENT, NULL, 0, 0, 640, 480);
     if (!app->window)
         return false;
 
@@ -420,7 +420,7 @@ int WINAPI wWinMain(
         ::MessageBoxW(NULL, L"该进程已经启动", L"错误", MB_OK);
         return 0;
     }
-    
+
     std::vector<wchar_t> tempPath;
     tempPath.resize(MAX_PATH);
 
