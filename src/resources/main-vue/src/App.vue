@@ -86,6 +86,7 @@ body {
   padding-right: 8px;
   position: relative;
   box-sizing: border-box;
+  overflow: auto;
 }
 
 [class*=" el-icon-"], [class^=el-icon-] {

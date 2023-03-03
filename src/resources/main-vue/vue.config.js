@@ -22,7 +22,7 @@ const cdn = {
   },
   // 注意引入顺序
   js: [
-    "lib/lodash/lodash.min.js",
+    "/lib/lodash/lodash.min.js",
   ],
   css: []
 }
