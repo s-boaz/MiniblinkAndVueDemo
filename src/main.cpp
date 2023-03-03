@@ -23,6 +23,7 @@ distribution.
 
 #define _CRT_SECURE_NO_WARNINGS
 
+#include <sstream>
 #include <Windows.h>
 #include <shellapi.h>
 #include <shlwapi.h>

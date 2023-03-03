@@ -1,10 +1,15 @@
 <template>
   <div id="app">
-    <div id="nav">
-
+    <div id="header">
+      <header-box/>
     </div>
-    <div class="content">
-      <router-view />
+    <div class="main">
+      <div id="nav">
+        <nav-box/>
+      </div>
+      <div id="content">
+        <router-view/>
+      </div>
     </div>
   </div>
 </template>
@@ -13,65 +18,78 @@
 export default {
   name: "App",
   data() {
-    return {
-
-    };
+    return {};
   },
-  methods: {
-
-  },
+  methods: {},
+  components: {
+    HeaderBox: () => import(/* webpackChunkName: "components" */ "./components/HeaderBox"),
+    NavBox: () => import(/* webpackChunkName: "components" */ "./components/NavBox"),
+  }
 };
 </script>
 
-<style>
+<style lang="scss">
 html,
 body {
   margin: 0;
   padding: 0;
-  font-size: 20px;
-  height: 100vh;
-  --theme: rgb(241, 107, 95);
-}
-#app {
+  list-style: none;
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+  color: #333;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 10px;
+  margin-right: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #d8d8d8;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #efefef;
+  background-color: #fff;
+  border-radius: 2px;
+}
+
+#app {
+  width: 1060px;
+  height: 680px;
+  border-radius: 8px;
+  position: relative;
+}
+
+#header {
+
+}
+
+.main {
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  width: 100vw;
+  height: 604px;
 }
 
 #nav {
-  background-color: white;
-  flex-shrink: 0;
-  font-size: 20px;
-  display: flex;
-  position: relative;
-  z-index: 1;
-  flex-direction: column;
-  padding: 30px 0;
-  width: 210px;
-  height: 100vh;
+  width: 180px;
+  padding-bottom: 24px;
+  padding-top: 0;
   box-sizing: border-box;
-  box-shadow: 3px 0px 9px 2px #e6e6e6;
-  transition: transform 0.1s linear;
-  transform: translate(0, 0);
-  overflow: auto;
 }
 
-@media screen and (max-width: 768px) {
-  #nav {
-    position: absolute;
-    box-shadow: none;
-    transform: translate(-100%, 0);
-  }
-}
-.content {
+#content {
   flex: 1;
-  height: 100vh;
-  overflow: hidden scroll;
-  width: 1px;
+  padding-bottom: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+[class*=" el-icon-"], [class^=el-icon-] {
+  font-size: 16px;
+  font-weight: bold!important;
 }
 </style>

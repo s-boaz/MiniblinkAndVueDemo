@@ -8,7 +8,7 @@ cd ./src/resources/main-vue
 
 #npm install
 #npm run start
-npm run build
+#npm run build
 
 #cd ../../
 #

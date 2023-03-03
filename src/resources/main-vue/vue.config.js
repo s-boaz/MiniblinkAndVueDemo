@@ -24,13 +24,13 @@ const cdn = {
   js: [
     "lib/lodash/lodash.min.js",
   ],
-  css: [
-    "lib/driver/driver.min.css",
-  ]
+  css: []
 }
+const basename = isProduction ? "/" : "/";
+
 module.exports = {
   // 微前端子应用热更新问题
-  publicPath: "./",
+  publicPath: basename,
   outputDir: "../dist",
 
   productionSourceMap: false, // env.DEV_SOURCE_MAP,
@@ -45,7 +45,8 @@ module.exports = {
       "Access-Control-Allow-Headers": "*",
       "Access-Control-Allow-Methods": "*",
     },
-    port: "8100",
+    historyApiFallback: true,
+    port: "8888",
   },
 
   configureWebpack: {

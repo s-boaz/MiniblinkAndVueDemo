@@ -1,25 +1,57 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
-// const basename = process.env.NODE_ENV === "production" ? "/demo-main-vue/" : "";
+
+const basename = process.env.NODE_ENV === "production" ? "" : "";
 
 Vue.use(VueRouter);
 
+export const routeHome = ''
+
 const routes = [
   {
-    path: "/home",
-    name: "home",
-    component: Home,
+    path: "/",
+    redirect: "/home/recommend",
   },
   {
-    path: "/",
-    redirect: "/home",
+    path: "/home/recommend",
+    name: "recommend",
+    component: () => import("@/views/Recommend.vue")
+  },
+  {
+    path: "/home/essential",
+    name: "essential",
+    component: () => import("@/views/Essential.vue")
+  },
+  {
+    path: "/home/game",
+    name: "game",
+    component: () => import("@/views/Game.vue")
+  },
+  {
+    path: "/home/work",
+    name: "work",
+    component: () => import("@/views/Work.vue")
+  },
+  {
+    path: "/home/all",
+    name: "all",
+    component: () => import("@/views/All.vue")
+  },
+  {
+    path: "/home/upgrade",
+    name: "upgrade",
+    component: () => import("@/views/Upgrade.vue")
+  },
+  {
+    path: "/home/unload",
+    name: "unload",
+    component: () => import("@/views/Unload.vue")
   },
 ];
 
 const router = new VueRouter({
   mode: "history",
-  // base: basename,
+  base: basename,
   routes,
 });
 
