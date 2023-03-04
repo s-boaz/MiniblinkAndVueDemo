@@ -28,7 +28,34 @@
       </el-menu>
     </div>
     <div v-for="(item, index) in contentConfig" :key="'content'+index" :class="[`item-${item.boxType}-box`]">
-      <h4>{{item.title}}</h4>
+      <div class="item-title">
+        <h4>{{item.title}}</h4>
+        <template v-if="item.boxType==='recommend'">
+          <el-button type="primary" size="mini" round>换一换</el-button>
+        </template>
+      </div>
+      <template v-if="item.boxType==='recommend'">
+        <soft-box v-for="item in 10" :key="'recommend'+item"></soft-box>
+      </template>
+      <template v-if="item.boxType==='top-list'">
+        <div v-for="(childItem, childIndex) in item.child" :key="`top-list${childIndex}`" class="item-top-list-wrapper">
+          <div class="item-top-list-header" :style="{background: childItem.background}">
+            {{childItem.title}}
+            <el-button type="text" size="mini">显示更多<i class="el-icon-arrow-right el-icon--right"></i></el-button>
+          </div>
+          <div class="item-top-list-body">
+            <div v-for="item in 5" :key="`top-list${childIndex}${item}`" class="item-top-list-soft">
+              <div class="item-top-list-rank">{{item}}</div>
+              <soft-box size="small">
+                <el-rate value="3.7" disabled show-score :colors="['#3168ff', '#3168ff', '#3168ff']" text-color="#333333"
+                         disabled-void-color="#c4cadd" score-template="{value}">
+                </el-rate>
+              </soft-box>
+            </div>
+          </div>
+        </div>
+
+      </template>
     </div>
     <div class="item-footer-box">
       <el-divider> 已经到底啦，看看<strong>装机必备</strong>吧 </el-divider>
@@ -103,6 +130,9 @@ export default {
     handleSelect() {
 
     }
+  },
+  components: {
+    SoftBox: () => import(/* webpackChunkName: "components" */ "../components/SoftBox"),
   }
 };
 </script>
@@ -123,11 +153,16 @@ export default {
 .recommend-container {
   padding-left: 32px;
   padding-right: 26px;
-  h4 {
-    font-size: 20px;
-    font-weight: 700;
-    color: #333;
-    margin-right: 30px;
+  .item-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    h4 {
+      margin: 0 30px 0 0;
+      font-size: 20px;
+      font-weight: 700;
+      color: #333;
+    }
   }
   > * {
     + * {
@@ -203,9 +238,64 @@ export default {
       font-weight: 700;
       font-size: 16px!important;
     }
-    .el-submenu.is-active .el-submenu__title i, {
+    .el-submenu.is-active .el-submenu__title i {
       color: #3a6dff;
     }
+  }
+  .item-recommend-box {
+    .soft-box {
+      margin-bottom: 20px;
+      margin-right: 12px;
+    }
+  }
+  .item-top-list-box {
+    .item-top-list-wrapper {
+      display: inline-flex;
+      flex-direction: column;
+      width: 256px;
+      background: #f7f7f7;
+      + .item-top-list-wrapper {
+        margin-left: 16px;
+      }
+    }
+    .item-top-list-header {
+      width: 100%;
+      height: 40px;
+      padding: 0 14px;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-sizing: border-box;
+      .el-button--text {
+        color: #ffffff;
+        i {
+          font-size: inherit!important;
+        }
+      }
+    }
+    .item-top-list-body {
+      padding: 8px 0;
+      .item-top-list-soft {
+        padding: 8px;
+        display: flex;
+        align-items: center;
+        .item-top-list-rank {
+          width: 24px;
+          height: 24px;
+          margin-right: 20px;
+          border-radius: 12px;
+          background: #ffb941;
+          color: #ffffff;
+          line-height: 24px;
+          text-align: center;
+        }
+        .soft-box {
+
+        }
+      }
+    }
+
   }
   .item-footer-box {
     width: 400px;

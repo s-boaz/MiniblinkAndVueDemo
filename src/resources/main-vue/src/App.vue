@@ -35,7 +35,8 @@ body {
   padding: 0;
   list-style: none;
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  color: #333;
+  font-size: 14px;
+  color: #333333;
   -moz-user-select: none;
   -webkit-user-select: none;
   user-select: none;
@@ -90,7 +91,7 @@ body {
 }
 
 [class*=" el-icon-"], [class^=el-icon-] {
-  font-size: 16px;
+  font-size: 16px!important;
   font-weight: bold!important;
 }
 </style>
