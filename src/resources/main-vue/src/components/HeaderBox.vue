@@ -7,7 +7,7 @@
     </div>
     <div class="item-content">
       <div class="item-left">
-        <el-button type="text"><i :class="['icon el-icon-arrow-left', {'is-disabled': $route.name==='recommend'}]"></i></el-button>
+        <el-button type="text" @click="$router.back()"><i :class="['icon el-icon-arrow-left', {'is-disabled': $route.name==='recommend'}]"></i></el-button>
         <div class="item-input">
           <el-input v-model="searchText" placeholder="请输入内容" suffix-icon="el-icon-search"></el-input>
         </div>
@@ -121,6 +121,7 @@ export default {
         color: #333333;
       }
       .is-disabled {
+        cursor: default;
         color: #e6e6e6;
       }
       /deep/ .item-input {

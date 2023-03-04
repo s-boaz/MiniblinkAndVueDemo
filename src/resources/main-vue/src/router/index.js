@@ -47,6 +47,21 @@ const routes = [
     name: "unload",
     component: () => import("@/views/Unload.vue")
   },
+  {
+    path: "/home/soft/:id",
+    name: "soft",
+    component: () => import("@/views/SoftDetails.vue")
+  },
+  {
+    path: "/home/soft_list/:id",
+    name: "soft_list",
+    component: () => import("@/views/SoftList.vue")
+  },
+  {
+    path: "/home/search",
+    name: "search",
+    component: () => import("@/views/Search.vue")
+  },
 ];
 
 const router = new VueRouter({
