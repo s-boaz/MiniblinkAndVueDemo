@@ -1,13 +1,13 @@
 <template>
   <div :class="['soft-box', 'soft-box--'+size, {'is-static': isStatic}]">
     <div class="item-soft-image">
-      <img src="@/assets/soft1.png" alt=""/>
+      <img :src="value.soft_icon" alt=""/>
     </div>
     <div class="item-soft-info">
-      <div class="item-soft-title">抖音</div>
+      <div class="item-soft-title">{{ value.soft_name }}</div>
       <!--评分+安装/描述+安装鼠标移入显示 仅描述 仅评分 仅安装-->
       <div class="item-soft-desc">
-        <slot>五一拼假攻略</slot>
+        <slot>{{value.soft_tip}}</slot>
       </div>
       <div class="item-soft-install">
         <el-button type="primary" size="mini" round>安装</el-button>
@@ -20,6 +20,16 @@
 export default {
   name: "SoftBox",
   props: {
+    value: {
+      type: Object,
+      default: () => {
+        return {
+          soft_name: '抖音',
+          soft_tip: '五一拼假攻略',
+          soft_icon: require('@/assets/soft1.png'),
+        }
+      }
+    },
     size: {
       type: String,
       default: 'mini'
@@ -46,6 +56,7 @@ export default {
   box-sizing: border-box;
   cursor: pointer;
   .item-soft-image {
+    flex: 0 0 40px;
     box-sizing: border-box;
     margin-right: 10px;
     width: 40px;
@@ -60,6 +71,7 @@ export default {
   .item-soft-info {
     flex: 1;
     max-width: 135px;
+    position: relative;
     .item-soft-title {
       font-size: 14px;
       margin-bottom: 4px;
@@ -103,11 +115,53 @@ export default {
 .soft-box--small {
   height: 60px;
   .item-soft-image {
+    flex: 0 0 48px;
     width: 48px;
     height: 48px;
   }
 }
 .soft-box--medium {
-
+  height: 102px;
+  justify-content: flex-start;
+  width: 368px;
+  &:nth-of-type(2n-1) {
+    margin-right: 58px;
+  }
+  .item-soft-image {
+    flex: 0 0 52px;
+    width: 52px;
+    height: 52px;
+  }
+  .item-soft-info {
+    max-width: 300px;
+    height: 52px;
+    .item-soft-title {
+      font-size: 16px;
+      margin-bottom: 12px;
+      font-weight: 700;
+      max-width: 214px;
+    }
+    .item-soft-desc {
+      display: block!important;
+      max-width: 214px;
+    }
+    .item-soft-install {
+      display: block!important;
+      position: absolute;
+      right: 0;
+      top: 0;
+      line-height: 52px;
+      button {
+        background-color: #fff;
+        border: 1px solid #3a6dff;
+        color: #3a6dff;
+        width: 76px;
+        height: 36px;
+        font-size: 14px;
+        border-radius: 20px;
+        box-sizing: border-box;
+      }
+    }
+  }
 }
 </style>

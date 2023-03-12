@@ -32,7 +32,7 @@
 <!--          </div>-->
 <!--        </div>-->
         <el-dropdown trigger="click" placement="top-start" style="margin-right: 10px">
-          <el-button type="text"><i class="icon el-icon-more"></i></el-button>
+          <el-button type="text" style="padding: 0"><i class="icon el-icon-more"></i></el-button>
           <el-dropdown-menu slot="dropdown" class="item-header-dropdown">
             <el-dropdown-item icon="el-icon-setting">设置中心</el-dropdown-item>
             <el-dropdown-item icon="el-icon-warning-outline">关于我们</el-dropdown-item>
@@ -57,27 +57,6 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.item-header-dropdown {
-  margin-top: 0!important;
-  .popper__arrow {
-    display: none!important;
-  }
-  .el-dropdown-menu__item {
-    padding: 0 10px;
-    font-size: 13px;
-    height: 30px;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    color: #333333;
-  }
-  .el-dropdown-menu__item:focus, .el-dropdown-menu__item:not(.is-disabled):hover {
-    background-color: #f3f4f8;
-    color: #333333;
-  }
-}
-</style>
 <style lang="scss" scoped>
 .header-box {
   -webkit-app-region: drag;

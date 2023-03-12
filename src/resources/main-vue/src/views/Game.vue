@@ -1,15 +1,20 @@
 <template>
-  <div>
-    Game
+  <div class="game-container">
+    <soft-list :pid="11"></soft-list>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Game"
+  name: "Game",
+  components: {
+    SoftList: () => import(/* webpackChunkName: "components" */ "../components/SoftList"),
+  }
 }
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+.game-container {
+  padding: 0 32px;
+}
 </style>

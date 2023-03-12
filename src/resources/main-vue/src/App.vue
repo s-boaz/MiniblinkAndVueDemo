@@ -94,4 +94,23 @@ body {
   font-size: 16px!important;
   font-weight: bold!important;
 }
+
+.el-dropdown-menu {
+  .popper__arrow {
+    display: none!important;
+  }
+  .el-dropdown-menu__item {
+    padding: 0 10px;
+    font-size: 13px;
+    height: 30px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    color: #333333;
+  }
+  .el-dropdown-menu__item:focus, .el-dropdown-menu__item:not(.is-disabled):hover {
+    background-color: #f3f4f8;
+    color: #333333;
+  }
+}
 </style>
